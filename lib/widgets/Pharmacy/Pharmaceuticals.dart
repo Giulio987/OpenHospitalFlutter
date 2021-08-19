@@ -107,11 +107,11 @@ class _PharmaceuticalsState extends State<Pharmaceuticals> {
             label: 'New Medical',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.business),
+            icon: Icon(Icons.healing),
             label: 'Modify Medical',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.school),
+            icon: Icon(Icons.delete),
             label: 'Delete Medical',
           ),
         ],
@@ -374,6 +374,7 @@ class DeleteMedical extends StatelessWidget {
   }) : super(key: key);
   void submitDelete(BuildContext context) async {
     int status = await deleteMedical(codeController.text);
+    Navigator.of(context).pop();
     if (status == 200) {
       showDialog(
         context: context,
@@ -384,13 +385,22 @@ class DeleteMedical extends StatelessWidget {
           );
         },
       );
-    }
-    if (status == 404) {
+    } else if (status == 404) {
       showDialog(
         context: context,
         builder: (BuildContext context) {
           return new AlertDialog(
             title: new Text("Connection Error"),
+            content: new Text("Unable to retrieve data"),
+          );
+        },
+      );
+    } else {
+      showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return new AlertDialog(
+            title: new Text("Unknown Error"),
             content: new Text("Unable to retrieve data"),
           );
         },
@@ -440,7 +450,7 @@ class DeleteMedical extends StatelessWidget {
                         TextButton(
                           onPressed: () {
                             submitDelete(context);
-                            Navigator.of(context).pop();
+                            //Navigator.of(context).pop();
                           },
                           child: Text("Yes"),
                         ),

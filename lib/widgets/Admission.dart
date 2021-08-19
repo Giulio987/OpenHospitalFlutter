@@ -109,6 +109,7 @@ class _AdmissionPatientState extends State<AdmissionPatient> {
     if (response == 201) {
       Navigator.of(context)
           .pop(); //automatically closes when insertion is finished
+      Navigator.of(context).pop();
       Navigator.of(context).push(MaterialPageRoute(
           builder: (BuildContext context) => AdmissionPatient()));
     } else if (response == 404) {

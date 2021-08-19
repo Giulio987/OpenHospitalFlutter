@@ -96,7 +96,7 @@ Future<int> deleteMedical(String code) async {
     } else {
       print(response.headers);
       //print(jsonDecode(response.body));
-      throw Exception();
+      return response.statusCode;
     }
   } on SocketException catch (e) {
     return 404;

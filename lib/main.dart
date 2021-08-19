@@ -3,7 +3,6 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:open_hospital/widgets/Pharmacy.dart';
 import 'package:open_hospital/widgets/Admission.dart';
-import 'package:open_hospital/widgets/OPD.dart';
 import 'package:open_hospital/widgets/Pharmacy/Pharmaceuticals.dart';
 import 'widgets/Patients/api_connection.dart';
 
@@ -127,12 +126,7 @@ class HomePageState extends State<HomePage> {
                                         backgroundColor:
                                             MaterialStateProperty.all(
                                                 Colors.red[800])),
-                                    onPressed: () {
-                                      Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                              builder: (context) => Opd()));
-                                    },
+                                    onPressed: () {},
                                     child: Text(
                                       "OPD",
                                       style: TextStyle(
@@ -411,10 +405,7 @@ class SmallDevicesContainer extends StatelessWidget {
                     style: ButtonStyle(
                         backgroundColor:
                             MaterialStateProperty.all(Colors.red[800])),
-                    onPressed: () {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => Opd()));
-                    },
+                    onPressed: () {},
                     child: Text(
                       "OPD",
                       style: TextStyle(fontSize: 18),

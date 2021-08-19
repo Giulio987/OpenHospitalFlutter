@@ -93,43 +93,43 @@ class LargeScreenDataList extends StatelessWidget {
           columns: [
             DataColumn(
               label: Text(
-                "Codice",
+                "Code",
                 style: TextStyle(fontSize: 18),
               ),
             ),
             DataColumn(
               label: Text(
-                "Nome",
+                "Name",
                 style: TextStyle(fontSize: 18),
               ),
             ),
             DataColumn(
               label: Text(
-                "Cognome",
+                "Surname",
                 style: TextStyle(fontSize: 18),
               ),
             ),
             DataColumn(
               label: Text(
-                "Anni",
+                "Age",
                 style: TextStyle(fontSize: 18),
               ),
             ),
             DataColumn(
               label: Text(
-                "Sesso",
+                "Sex",
                 style: TextStyle(fontSize: 18),
               ),
             ),
             DataColumn(
               label: Text(
-                "Città",
+                "City",
                 style: TextStyle(fontSize: 18),
               ),
             ),
             DataColumn(
               label: Text(
-                "Gruppo S.",
+                "Blood t.",
                 style: TextStyle(fontSize: 18),
               ),
             ),

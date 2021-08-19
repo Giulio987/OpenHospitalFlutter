@@ -116,7 +116,7 @@ class _ModifyPatientState extends State<ModifyPatient> {
                                     fontSize: 18, fontWeight: FontWeight.bold),
                               ),
                             ),
-                            Padding(padding: EdgeInsets.only(right: 8)),
+                            Padding(padding: EdgeInsets.only(right: 3)),
                             Flexible(
                               child: TextField(
                                 controller: firstNameController,
@@ -137,7 +137,7 @@ class _ModifyPatientState extends State<ModifyPatient> {
                                     fontSize: 18, fontWeight: FontWeight.bold),
                               ),
                             ),
-                            Padding(padding: EdgeInsets.only(right: 8)),
+                            Padding(padding: EdgeInsets.only(right: 3)),
                             Flexible(
                               child: TextField(
                                 controller: secondaNameController,
@@ -158,7 +158,7 @@ class _ModifyPatientState extends State<ModifyPatient> {
                                     fontSize: 18, fontWeight: FontWeight.bold),
                               ),
                             ),
-                            Padding(padding: EdgeInsets.only(right: 8)),
+                            Padding(padding: EdgeInsets.only(right: 3)),
                             Flexible(
                               child: TextField(
                                 controller: birthDateController,
@@ -179,7 +179,7 @@ class _ModifyPatientState extends State<ModifyPatient> {
                                     fontSize: 18, fontWeight: FontWeight.bold),
                               ),
                             ),
-                            Padding(padding: EdgeInsets.only(right: 8)),
+                            Padding(padding: EdgeInsets.only(right: 3)),
                             Flexible(
                               child: TextField(
                                 controller: ageController,
@@ -200,7 +200,7 @@ class _ModifyPatientState extends State<ModifyPatient> {
                                     fontSize: 18, fontWeight: FontWeight.bold),
                               ),
                             ),
-                            Padding(padding: EdgeInsets.only(right: 8)),
+                            Padding(padding: EdgeInsets.only(right: 3)),
                             Flexible(
                               child: TextField(
                                 controller: agetypeController,
@@ -255,7 +255,7 @@ class _ModifyPatientState extends State<ModifyPatient> {
                                     fontSize: 18, fontWeight: FontWeight.bold),
                               ),
                             ),
-                            Padding(padding: EdgeInsets.only(right: 8)),
+                            Padding(padding: EdgeInsets.only(right: 3)),
                             Flexible(
                               child: TextField(
                                 controller: cityController,
@@ -276,7 +276,7 @@ class _ModifyPatientState extends State<ModifyPatient> {
                                     fontSize: 18, fontWeight: FontWeight.bold),
                               ),
                             ),
-                            Padding(padding: EdgeInsets.only(right: 8)),
+                            Padding(padding: EdgeInsets.only(right: 3)),
                             Flexible(
                               child: TextField(
                                 controller: telephoneController,
@@ -297,7 +297,7 @@ class _ModifyPatientState extends State<ModifyPatient> {
                                     fontSize: 18, fontWeight: FontWeight.bold),
                               ),
                             ),
-                            Padding(padding: EdgeInsets.only(right: 8)),
+                            Padding(padding: EdgeInsets.only(right: 3)),
                             Flexible(
                               child: TextField(
                                 controller: noteController,
@@ -318,7 +318,7 @@ class _ModifyPatientState extends State<ModifyPatient> {
                                     fontSize: 18, fontWeight: FontWeight.bold),
                               ),
                             ),
-                            Padding(padding: EdgeInsets.only(right: 8)),
+                            Padding(padding: EdgeInsets.only(right: 3)),
                             Flexible(
                               child: TextField(
                                 controller: motherNameController,
@@ -373,7 +373,7 @@ class _ModifyPatientState extends State<ModifyPatient> {
                                     fontSize: 18, fontWeight: FontWeight.bold),
                               ),
                             ),
-                            Padding(padding: EdgeInsets.only(right: 8)),
+                            Padding(padding: EdgeInsets.only(right: 3)),
                             Flexible(
                               child: TextField(
                                 controller: fatherNameController,
@@ -537,7 +537,7 @@ class _ModifyPatientState extends State<ModifyPatient> {
                                     fontSize: 18, fontWeight: FontWeight.bold),
                               ),
                             ),
-                            Padding(padding: EdgeInsets.only(right: 8)),
+                            Padding(padding: EdgeInsets.only(right: 3)),
                             Flexible(
                               child: TextField(
                                 controller: taxCodeController,
@@ -558,7 +558,7 @@ class _ModifyPatientState extends State<ModifyPatient> {
                                     fontSize: 18, fontWeight: FontWeight.bold),
                               ),
                             ),
-                            Padding(padding: EdgeInsets.only(right: 8)),
+                            Padding(padding: EdgeInsets.only(right: 3)),
                             Flexible(
                               child: TextField(
                                 controller: heightController,
@@ -579,7 +579,7 @@ class _ModifyPatientState extends State<ModifyPatient> {
                                     fontSize: 18, fontWeight: FontWeight.bold),
                               ),
                             ),
-                            Padding(padding: EdgeInsets.only(right: 8)),
+                            Padding(padding: EdgeInsets.only(right: 3)),
                             Flexible(
                               child: TextField(
                                 controller: weightController,
@@ -600,7 +600,7 @@ class _ModifyPatientState extends State<ModifyPatient> {
                                     fontSize: 18, fontWeight: FontWeight.bold),
                               ),
                             ),
-                            Padding(padding: EdgeInsets.only(right: 8)),
+                            Padding(padding: EdgeInsets.only(right: 3)),
                             Flexible(
                               child: TextField(
                                 controller: blobController,
@@ -700,15 +700,18 @@ class _ModifyPatientState extends State<ModifyPatient> {
 
   @override
   Widget build(BuildContext context) {
+    double deviceWidth = MediaQuery.of(context).size.width;
     return GestureDetector(
       child: Column(
         children: [
-          TextField(
-            decoration:
-                InputDecoration(labelText: 'Codice paziente da Aggiornare'),
-            controller: codeController,
-            keyboardType: TextInputType.number,
-            onSubmitted: (_) => submitgetPat(),
+          Container(
+            width: 0.95 * deviceWidth,
+            child: TextField(
+              decoration: InputDecoration(labelText: 'Code for updating'),
+              controller: codeController,
+              keyboardType: TextInputType.number,
+              onSubmitted: (_) => submitgetPat(),
+            ),
           ),
           Padding(padding: EdgeInsets.all(10)),
           Container(
