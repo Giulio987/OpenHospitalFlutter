@@ -23,22 +23,22 @@ class _NewMedicalState extends State<NewMedical> {
     final prodCode = prodCodeController.text;
     final desc = descCotroller.text;
     final pPPkt = int.parse(pPPktController.text);
-    final critical = double.parse(criticalController.text);
+    final minqty = double.parse(criticalController.text);
     int code = 1;
-    double inqty = 21.0;
-    double outqty = 8.0;
-    double minqty = 15.0;
+    double inqty = 0;
+    double outqty = 0;
+    double initialqty = 0;
     widget.newMed(
       //anche se è in un'altra classe posso accedervi con widget.
       prodCode,
       dropdownValue,
       desc,
       pPPkt,
-      critical,
+      minqty,
       code,
       inqty,
       outqty,
-      minqty,
+      initialqty,
     );
   }
 

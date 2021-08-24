@@ -5,20 +5,119 @@ import 'package:open_hospital/widgets/Pharmacy.dart';
 import 'package:open_hospital/widgets/Admission.dart';
 import 'package:open_hospital/widgets/Pharmacy/Pharmaceuticals.dart';
 import 'widgets/Patients/api_connection.dart';
+import 'apiLogin.dart';
+import './widgets/Patients/api_connection.dart';
+import './widgets/Pharmacy/api_connection.dart';
+import './widgets/Pharmacy/api_connection_type.dart';
 
 void main() {
   runApp(MaterialApp(
     theme: ThemeData(primaryColor: Colors.red.shade800),
     title: "Open Hospital",
     debugShowCheckedModeBanner: false,
-    home: HomePage("Open Hospital"),
+    home: LoginPage(),
     //debugShowCheckedModeBanner: false, //per rimuovere la scritta debug
   ));
 }
 
+class LoginPage extends StatefulWidget {
+  const LoginPage({Key? key}) : super(key: key);
+
+  @override
+  _LoginPageState createState() => _LoginPageState();
+}
+
+class _LoginPageState extends State<LoginPage> {
+  final userNameController = TextEditingController();
+  final passwordController = TextEditingController();
+  Map<String, dynamic> credentials = {};
+
+  void login() async {
+    credentials =
+        await tryLogin(userNameController.text, passwordController.text);
+    if (credentials.isEmpty) {
+      showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return new AlertDialog(
+            title: new Text("Wrong Credentials"),
+            content: new Text("Try again"),
+          );
+        },
+      );
+    } else {
+      setHeaderPatient(credentials['token']);
+      setHeaderPharmacy(credentials['token']);
+      setHeaderType(credentials['token']);
+      Navigator.push(
+          context,
+          MaterialPageRoute(
+              builder: (context) =>
+                  HomePage("Open Hospital", credentials['displayName'])));
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        body: Center(
+      child: SingleChildScrollView(
+        scrollDirection: Axis.vertical,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Container(
+              width: 300,
+              child: Image.asset(
+                "images/logo.png",
+                fit: BoxFit.fill,
+              ),
+            ),
+            Padding(padding: EdgeInsets.all(10.0)),
+            Container(
+              width: 300,
+              child: TextFormField(
+                decoration: InputDecoration(
+                    border: UnderlineInputBorder(),
+                    labelText: 'Enter your username'),
+                keyboardType: TextInputType.text,
+                controller: userNameController,
+              ),
+            ),
+            Padding(padding: EdgeInsets.all(10.0)),
+            Container(
+              width: 300,
+              child: TextFormField(
+                decoration: InputDecoration(
+                    border: UnderlineInputBorder(),
+                    labelText: 'Enter your password'),
+                controller: passwordController,
+                keyboardType: TextInputType.visiblePassword,
+              ),
+            ),
+            Padding(padding: EdgeInsets.all(10.0)),
+            ElevatedButton(
+              onPressed: login,
+              child: Text(
+                "Enter",
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+              ),
+              style: ButtonStyle(
+                  backgroundColor:
+                      MaterialStateProperty.all(Colors.red.shade800)),
+            ),
+          ],
+        ),
+      ),
+    ));
+  }
+}
+
 class HomePage extends StatefulWidget {
   final String title;
-  HomePage(this.title);
+  final String displayName;
+  HomePage(this.title, this.displayName);
   @override
   HomePageState createState() => HomePageState();
 }
@@ -64,7 +163,7 @@ class HomePageState extends State<HomePage> {
                 child: Column(
               children: [
                 Container(height: 120, child: Image.asset("images/logo.png")),
-                Text("You are administrator")
+                Text("You are logged as " + widget.displayName)
               ],
             )),
             Card(

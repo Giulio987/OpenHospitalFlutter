@@ -29,11 +29,11 @@ class _PharmaceuticalsState extends State<Pharmaceuticals> {
     String? type,
     String? desc,
     int? pPPkt,
-    double? critical,
+    double? minqty,
     int? code,
     double? inqty,
     double? outqty,
-    double? minqty,
+    double? initialqty,
   ) async {
     //print("CIAO");
     List? l = MedicalTypeDTO.returnTypeList();
@@ -52,7 +52,7 @@ class _PharmaceuticalsState extends State<Pharmaceuticals> {
       typeDTO: m!.toMap(),
       description: desc,
       pcsperpk: pPPkt,
-      initialQuantity: critical, //NON è IL VALORE GIUSTO
+      initialQuantity: initialqty,
       code: code,
       inqty: inqty,
       outqty: outqty,

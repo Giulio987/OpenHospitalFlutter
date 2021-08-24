@@ -90,7 +90,7 @@ class _ModifyMedicalState extends State<ModifyMedical> {
   final prodCodeController = TextEditingController();
   final descCotroller = TextEditingController();
   final pPPktController = TextEditingController();
-  final criticalController = TextEditingController();
+  final initialqtyController = TextEditingController();
   final inqtyController = TextEditingController();
   final outqtyController = TextEditingController();
   final minqtyController = TextEditingController();
@@ -101,8 +101,8 @@ class _ModifyMedicalState extends State<ModifyMedical> {
     final String? prodCode = prodCodeController.text;
     final String? desc = descCotroller.text;
     final int? pPPkt = int.parse(pPPktController.text);
-    final double? critical =
-        double.parse(criticalController.text); // per ora è intiialqty
+    final double? initialqty =
+        double.parse(initialqtyController.text); // per ora è intiialqty
     final int? code = int.parse(codeController.text);
     final double? inqty = double.parse(inqtyController.text);
     final double? outqty = double.parse(outqtyController.text);
@@ -121,7 +121,7 @@ class _ModifyMedicalState extends State<ModifyMedical> {
         prodCode: prodCode,
         description: desc,
         pcsperpk: pPPkt,
-        initialQuantity: critical,
+        initialQuantity: initialqty,
         inqty: inqty,
         outqty: outqty,
         minqty: minqty,
@@ -166,7 +166,8 @@ class _ModifyMedicalState extends State<ModifyMedical> {
             prodCodeController.text = snapshot.data!.prodCode.toString();
             descCotroller.text = snapshot.data!.description.toString();
             pPPktController.text = snapshot.data!.pcsperpk.toString();
-            criticalController.text = snapshot.data!.initialQuantity.toString();
+            initialqtyController.text =
+                snapshot.data!.initialQuantity.toString();
             inqtyController.text = snapshot.data!.inqty.toString();
             outqtyController.text = snapshot.data!.outqty.toString();
             minqtyController.text = snapshot.data!.minqty.toString();
@@ -175,7 +176,7 @@ class _ModifyMedicalState extends State<ModifyMedical> {
                 prodCodeController.text == "null" &&
                 descCotroller.text == "null" &&
                 pPPktController.text == "null" &&
-                criticalController.text == "null" &&
+                initialqtyController.text == "null" &&
                 inqtyController.text == "null" &&
                 outqtyController.text == "null" &&
                 minqtyController.text == "null") {
@@ -212,6 +213,7 @@ class _ModifyMedicalState extends State<ModifyMedical> {
                             Container(
                               width: (deviceWidth / 2) * 0.9,
                               child: TextField(
+                                enabled: false,
                                 decoration: InputDecoration(labelText: 'Code'),
                                 controller: codeController,
                                 onSubmitted: (_) => submitData(),
@@ -220,6 +222,7 @@ class _ModifyMedicalState extends State<ModifyMedical> {
                             Container(
                               width: (deviceWidth / 2) * 0.9,
                               child: TextField(
+                                enabled: false,
                                 decoration: InputDecoration(
                                     labelText: 'Output Quantity'),
                                 controller: outqtyController,
@@ -235,23 +238,25 @@ class _ModifyMedicalState extends State<ModifyMedical> {
                           children: [
                             TextField(
                               decoration:
-                                  InputDecoration(labelText: 'description'),
+                                  InputDecoration(labelText: 'Description'),
                               controller: descCotroller,
                               onSubmitted: (_) => submitData(),
                             ),
                             TextField(
                               decoration: InputDecoration(
-                                  labelText: 'critical/INITIALQTY'),
-                              controller: criticalController,
+                                  labelText: 'Initialqty Quantity'),
+                              controller: initialqtyController,
                               onSubmitted: (_) => submitData(),
+                              enabled: false,
                             ),
                             TextField(
-                              decoration: InputDecoration(labelText: 'inqty'),
+                              decoration: InputDecoration(labelText: 'Inqty'),
                               controller: inqtyController,
                               onSubmitted: (_) => submitData(),
+                              enabled: false,
                             ),
                             TextField(
-                              decoration: InputDecoration(labelText: 'minqty'),
+                              decoration: InputDecoration(labelText: 'Minqty'),
                               controller: minqtyController,
                               onSubmitted: (_) => submitData(),
                             ),
@@ -297,7 +302,7 @@ class _ModifyMedicalState extends State<ModifyMedical> {
                           child: ElevatedButton(
                             onPressed: submitData,
                             child: Text(
-                              "Aggiorna",
+                              "Update",
                               style: TextStyle(fontSize: 18),
                             ),
                             style: ButtonStyle(

@@ -9,11 +9,15 @@ import 'package:open_hospital/models/medicalTypeDTO.dart';
 
 final _base = "http://localhost:8080/oh-api/medicaltypes";
 final Uri _tokenURL = Uri.parse(_base);
-Map<String, String> header = {
-  "accept": "application/json; charset=UTF-8",
-  "content-type": "application/json",
-  'authorization': 'Basic YWRtaW46YWRtaW4=',
-};
+Map<String, String> header = {};
+void setHeaderPharmacy(String token) {
+  String auth = "Bearer " + token;
+  header = {
+    "accept": "application/json; charset=UTF-8",
+    "content-type": "application/json",
+    'authorization': auth,
+  };
+}
 
 List<MedicalTypeDTO> medicalsTypeFromJson(String str) {
   final parsed = jsonDecode(str).cast<Map<String, dynamic>>();

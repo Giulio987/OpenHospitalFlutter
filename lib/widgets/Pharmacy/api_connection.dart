@@ -9,11 +9,15 @@ import 'package:path_provider/path_provider.dart';
 //change for native development
 final _base = "http://192.168.1.106:8080/oh-api/medicals?ignore_similar=false";
 final Uri _tokenURL = Uri.parse(_base);
-Map<String, String> header = {
-  "accept": "application/json; charset=UTF-8",
-  "content-type": "application/json",
-  'authorization': 'Basic YWRtaW46YWRtaW4=',
-};
+Map<String, String> header = {};
+void setHeaderType(String token) {
+  String auth = "Bearer " + token;
+  header = {
+    "accept": "application/json; charset=UTF-8",
+    "content-type": "application/json",
+    'authorization': auth,
+  };
+}
 
 Future<int> createMedical(Medical m) async {
   print(_tokenURL);

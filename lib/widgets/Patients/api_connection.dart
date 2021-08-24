@@ -9,11 +9,16 @@ import '../../models/patient.dart';
 //  ? "http://10.0.2.2:8080/oh-api/patients"
 final _base = "http://localhost:8080/oh-api/patients";
 final Uri _tokenURL = Uri.parse(_base);
-Map<String, String> header = {
-  "accept": "application/json; charset=UTF-8",
-  "content-type": "application/json",
-  'authorization': 'Basic YWRtaW46YWRtaW4=',
-};
+Map<String, String> header = {};
+void setHeaderPatient(String token) {
+  String auth = "Bearer " + token;
+  header = {
+    "accept": "application/json; charset=UTF-8",
+    "content-type": "application/json",
+    'authorization': auth,
+  };
+}
+
 Future<int> createPatient(Patient p) async {
   //print(_tokenURL);
   try {
@@ -119,6 +124,7 @@ List<Patient> patientsFromJson(String str) {
 
 Future<List<Patient>> fetchPatients(http.Client client) async {
   //print(_tokenURL);
+  //print(header);
   List<Patient> m = [];
   try {
     final http.Response response = await http.get(
@@ -129,6 +135,7 @@ Future<List<Patient>> fetchPatients(http.Client client) async {
       return patientsFromJson(response.body);
     } else {
       print(response.headers);
+      print(response.body);
       throw Exception(); //managed on the main page
     }
   } on SocketException catch (e) {

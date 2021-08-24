@@ -44,7 +44,7 @@ class _ModifyPatientState extends State<ModifyPatient> {
         return StatefulBuilder(
             builder: (BuildContext context, StateSetter mystate) {
           double deviceWidth = MediaQuery.of(context).size.width;
-          double deviceHeight = MediaQuery.of(context).size.height;
+          //double deviceHeight = MediaQuery.of(context).size.height;
           return GestureDetector(
             child: FutureBuilder<Patient>(
               future: fetchPatient(http.Client(), codeController.text),
@@ -100,6 +100,7 @@ class _ModifyPatientState extends State<ModifyPatient> {
                     scrollDirection: Axis.vertical,
                     child: Column(
                       children: [
+                        Padding(padding: EdgeInsets.all(5.0)),
                         Text(
                           "Modify Patient Data: ",
                           style: TextStyle(
@@ -118,10 +119,13 @@ class _ModifyPatientState extends State<ModifyPatient> {
                             ),
                             Padding(padding: EdgeInsets.only(right: 3)),
                             Flexible(
-                              child: TextField(
-                                controller: firstNameController,
-                                onSubmitted: (_) => submitData(),
-                                textAlign: TextAlign.center,
+                              child: Container(
+                                width: deviceWidth * 0.9,
+                                child: TextField(
+                                  controller: firstNameController,
+                                  onSubmitted: (_) => submitData(),
+                                  textAlign: TextAlign.center,
+                                ),
                               ),
                             ),
                           ],
@@ -139,10 +143,13 @@ class _ModifyPatientState extends State<ModifyPatient> {
                             ),
                             Padding(padding: EdgeInsets.only(right: 3)),
                             Flexible(
-                              child: TextField(
-                                controller: secondaNameController,
-                                onSubmitted: (_) => submitData(),
-                                textAlign: TextAlign.center,
+                              child: Container(
+                                width: deviceWidth * 0.9,
+                                child: TextField(
+                                  controller: secondaNameController,
+                                  onSubmitted: (_) => submitData(),
+                                  textAlign: TextAlign.center,
+                                ),
                               ),
                             ),
                           ],
@@ -160,10 +167,13 @@ class _ModifyPatientState extends State<ModifyPatient> {
                             ),
                             Padding(padding: EdgeInsets.only(right: 3)),
                             Flexible(
-                              child: TextField(
-                                controller: birthDateController,
-                                onSubmitted: (_) => submitData(),
-                                textAlign: TextAlign.center,
+                              child: Container(
+                                width: deviceWidth * 0.9,
+                                child: TextField(
+                                  controller: birthDateController,
+                                  onSubmitted: (_) => submitData(),
+                                  textAlign: TextAlign.center,
+                                ),
                               ),
                             ),
                           ],
@@ -181,10 +191,13 @@ class _ModifyPatientState extends State<ModifyPatient> {
                             ),
                             Padding(padding: EdgeInsets.only(right: 3)),
                             Flexible(
-                              child: TextField(
-                                controller: ageController,
-                                onSubmitted: (_) => submitData(),
-                                textAlign: TextAlign.center,
+                              child: Container(
+                                width: deviceWidth * 0.9,
+                                child: TextField(
+                                  controller: ageController,
+                                  onSubmitted: (_) => submitData(),
+                                  textAlign: TextAlign.center,
+                                ),
                               ),
                             ),
                           ],
@@ -202,10 +215,13 @@ class _ModifyPatientState extends State<ModifyPatient> {
                             ),
                             Padding(padding: EdgeInsets.only(right: 3)),
                             Flexible(
-                              child: TextField(
-                                controller: agetypeController,
-                                onSubmitted: (_) => submitData(),
-                                textAlign: TextAlign.center,
+                              child: Container(
+                                width: deviceWidth * 0.9,
+                                child: TextField(
+                                  controller: agetypeController,
+                                  onSubmitted: (_) => submitData(),
+                                  textAlign: TextAlign.center,
+                                ),
                               ),
                             ),
                           ],
@@ -257,10 +273,13 @@ class _ModifyPatientState extends State<ModifyPatient> {
                             ),
                             Padding(padding: EdgeInsets.only(right: 3)),
                             Flexible(
-                              child: TextField(
-                                controller: cityController,
-                                onSubmitted: (_) => submitData(),
-                                textAlign: TextAlign.center,
+                              child: Container(
+                                width: deviceWidth * 0.9,
+                                child: TextField(
+                                  controller: cityController,
+                                  onSubmitted: (_) => submitData(),
+                                  textAlign: TextAlign.center,
+                                ),
                               ),
                             ),
                           ],
@@ -278,10 +297,13 @@ class _ModifyPatientState extends State<ModifyPatient> {
                             ),
                             Padding(padding: EdgeInsets.only(right: 3)),
                             Flexible(
-                              child: TextField(
-                                controller: telephoneController,
-                                onSubmitted: (_) => submitData(),
-                                textAlign: TextAlign.center,
+                              child: Container(
+                                width: deviceWidth * 0.9,
+                                child: TextField(
+                                  controller: telephoneController,
+                                  onSubmitted: (_) => submitData(),
+                                  textAlign: TextAlign.center,
+                                ),
                               ),
                             ),
                           ],
@@ -299,10 +321,13 @@ class _ModifyPatientState extends State<ModifyPatient> {
                             ),
                             Padding(padding: EdgeInsets.only(right: 3)),
                             Flexible(
-                              child: TextField(
-                                controller: noteController,
-                                onSubmitted: (_) => submitData(),
-                                textAlign: TextAlign.center,
+                              child: Container(
+                                width: deviceWidth * 0.9,
+                                child: TextField(
+                                  controller: noteController,
+                                  onSubmitted: (_) => submitData(),
+                                  textAlign: TextAlign.center,
+                                ),
                               ),
                             ),
                           ],
@@ -320,10 +345,13 @@ class _ModifyPatientState extends State<ModifyPatient> {
                             ),
                             Padding(padding: EdgeInsets.only(right: 3)),
                             Flexible(
-                              child: TextField(
-                                controller: motherNameController,
-                                onSubmitted: (_) => submitData(),
-                                textAlign: TextAlign.center,
+                              child: Container(
+                                width: deviceWidth * 0.9,
+                                child: TextField(
+                                  controller: motherNameController,
+                                  onSubmitted: (_) => submitData(),
+                                  textAlign: TextAlign.center,
+                                ),
                               ),
                             ),
                           ],
@@ -375,10 +403,13 @@ class _ModifyPatientState extends State<ModifyPatient> {
                             ),
                             Padding(padding: EdgeInsets.only(right: 3)),
                             Flexible(
-                              child: TextField(
-                                controller: fatherNameController,
-                                onSubmitted: (_) => submitData(),
-                                textAlign: TextAlign.center,
+                              child: Container(
+                                width: deviceWidth * 0.9,
+                                child: TextField(
+                                  controller: fatherNameController,
+                                  onSubmitted: (_) => submitData(),
+                                  textAlign: TextAlign.center,
+                                ),
                               ),
                             ),
                           ],
@@ -539,10 +570,13 @@ class _ModifyPatientState extends State<ModifyPatient> {
                             ),
                             Padding(padding: EdgeInsets.only(right: 3)),
                             Flexible(
-                              child: TextField(
-                                controller: taxCodeController,
-                                onSubmitted: (_) => submitData(),
-                                textAlign: TextAlign.center,
+                              child: Container(
+                                width: deviceWidth * 0.9,
+                                child: TextField(
+                                  controller: taxCodeController,
+                                  onSubmitted: (_) => submitData(),
+                                  textAlign: TextAlign.center,
+                                ),
                               ),
                             ),
                           ],
@@ -560,10 +594,13 @@ class _ModifyPatientState extends State<ModifyPatient> {
                             ),
                             Padding(padding: EdgeInsets.only(right: 3)),
                             Flexible(
-                              child: TextField(
-                                controller: heightController,
-                                onSubmitted: (_) => submitData(),
-                                textAlign: TextAlign.center,
+                              child: Container(
+                                width: deviceWidth * 0.9,
+                                child: TextField(
+                                  controller: heightController,
+                                  onSubmitted: (_) => submitData(),
+                                  textAlign: TextAlign.center,
+                                ),
                               ),
                             ),
                           ],
@@ -581,10 +618,13 @@ class _ModifyPatientState extends State<ModifyPatient> {
                             ),
                             Padding(padding: EdgeInsets.only(right: 3)),
                             Flexible(
-                              child: TextField(
-                                controller: weightController,
-                                onSubmitted: (_) => submitData(),
-                                textAlign: TextAlign.center,
+                              child: Container(
+                                width: deviceWidth * 0.9,
+                                child: TextField(
+                                  controller: weightController,
+                                  onSubmitted: (_) => submitData(),
+                                  textAlign: TextAlign.center,
+                                ),
                               ),
                             ),
                           ],
@@ -602,10 +642,13 @@ class _ModifyPatientState extends State<ModifyPatient> {
                             ),
                             Padding(padding: EdgeInsets.only(right: 3)),
                             Flexible(
-                              child: TextField(
-                                controller: blobController,
-                                onSubmitted: (_) => submitData(),
-                                textAlign: TextAlign.center,
+                              child: Container(
+                                width: deviceWidth * 0.9,
+                                child: TextField(
+                                  controller: blobController,
+                                  onSubmitted: (_) => submitData(),
+                                  textAlign: TextAlign.center,
+                                ),
                               ),
                             ),
                           ],
